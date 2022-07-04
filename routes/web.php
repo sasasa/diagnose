@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ResultController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [QuestionController::class, 'index'])->name('question.index');
+Route::post('/answer', [QuestionController::class, 'answer'])->name('question.answer');
+Route::get('/result/{result}', [ResultController::class, 'show'])->name('result.show');
 
 Route::middleware([
     'auth:sanctum',
