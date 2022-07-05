@@ -143,6 +143,10 @@ class QuestionServiceTest extends TestCase
             $yes_no_10+
             $yes_no_11+
             $yes_no_12, $result->point);
+        $this->assertDatabaseHas('results', [
+            'result_template_id' => $result->result_template_id,
+            'point' => $result->point,
+        ]);
         $this->assertDatabaseHas('questions', [
             'question_template_id' => $questionTemplate12->id,
             'point' => $yes_no_12,
