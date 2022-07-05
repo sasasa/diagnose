@@ -34,7 +34,6 @@ class QuestionController extends Controller
     public function answer(QuestionRequest $request)
     {
         $result = $this->service->getResult($request->question);
-        // dd($result);
         return redirect()->route('result.show', ['result' => $result]);
     }
 

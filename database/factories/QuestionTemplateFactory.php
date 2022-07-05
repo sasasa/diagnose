@@ -14,7 +14,7 @@ class QuestionTemplateFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'content' => $this->faker->name,
         ];
     }
 }

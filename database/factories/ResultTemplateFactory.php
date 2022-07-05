@@ -14,7 +14,8 @@ class ResultTemplateFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'content' => $this->faker->realText,
         ];
     }
 }

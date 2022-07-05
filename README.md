@@ -43,8 +43,10 @@ sail artisan make:model Question -frs
 sail artisan make:model ResultTemplate -frs
 sail artisan make:model Result -frs
 
-
 sail artisan make:request QuestionRequest
+
+sail artisan make:test Services/QuestionServiceTest
+sail test tests/Feature/Services/QuestionServiceTest.php
 -->
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>

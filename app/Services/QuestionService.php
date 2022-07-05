@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class QuestionService
 {
-    public function getResult(array $questions)
+    public function getResult(array $questions): Result
     {
         try {
             DB::beginTransaction();
@@ -26,9 +26,10 @@ class QuestionService
                     'user_id' => $user->id,
                 ]);
             }
-            // dd($pointAll);
             $resultTemplate = ResultTemplate::query()->where('min_point', '<=', $pointAll)->where('max_point', '>=', $pointAll)->first();
-            // dd($resultTemplate);
+            if(!$resultTemplate) {
+                throw new \Exception('数値の範囲のResultTemplateが見つからない');
+            }
             $result = Result::create([
                 'point' => $pointAll,
                 'user_id' => $user->id,
@@ -37,8 +38,9 @@ class QuestionService
             DB::commit();
             return $result;
         } catch (\Throwable $e) {
-            Log::critical(__METHOD__.':'.__LINE__. $e->getMessage());
+            Log::critical(__METHOD__.':'.__LINE__.':'. $e->getMessage());
             DB::rollBack();
+            throw $e;
         }
     }
 }
