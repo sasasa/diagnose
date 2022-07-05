@@ -45,6 +45,7 @@ sail artisan make:model Result -frs
 
 sail artisan make:request QuestionRequest
 
+テストをやる際はDBを分けるために.env.testingを用意する
 sail artisan make:test Services/QuestionServiceTest
 sail test tests/Feature/Services/QuestionServiceTest.php
 -->
