@@ -17,11 +17,9 @@
   <main>
     {{ $slot }}
   </main>
-  <script>
-
-  </script>
   <footer>
     ©XXXXXXXX
   </footer>
+  @stack('scripts')
 </body>
 </html>
